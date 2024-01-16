@@ -1,0 +1,19 @@
+name: Greet
+
+inputs:
+  name:
+    description: Name
+
+outputs:
+  msg:
+    value: ${{ steps.hello.outputs.msg }}
+
+runs:
+  using: composite
+  steps:
+    - id: hello
+      shell: bash
+      run: >-
+        echo "msg=Hello ${{ inputs.name }}!"
+        >> $GITHUB_OUTPUT
+

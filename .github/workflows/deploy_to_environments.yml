@@ -1,4 +1,6 @@
-name: Deploy to Environments
+
+
+name: Matrix, Envionments and Secrets
 
 on:
   workflow_dispatch: {}
@@ -15,4 +17,6 @@ jobs:
     steps:
       - run: >-
           echo "Deploying to ${{ matrix.environment }}
-          using key $(echo ${{ secrets.API_KEY }} | rev)"
+          using key ${{ secrets.API_KEY }}"
+
+

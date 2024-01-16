@@ -1,0 +1,27 @@
+
+
+name: Greet
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        type: string
+        required: true
+    outputs:
+      msg:
+        value: ${{ jobs.greet.outputs.msg }}
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - id: hello
+        run: >-
+          echo "msg=Hello ${{ inputs.name }}!"
+          >> $GITHUB_OUTPUT
+    outputs:
+      msg: ${{ steps.hello.outputs.msg }}
+
+
+
